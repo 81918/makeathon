@@ -30,10 +30,6 @@ session_start();
      */
     $contact = "../Contact/contact.php";
 
-// login check
- $login = ["Level" => null];
- $_SESSION['Login'] = $login;
-//    $_POST['Username'] = null;
     /*
      *  check of je in bent gelogt
      */
@@ -52,7 +48,7 @@ session_start();
     /*
      * check of velden niet leeg zijn
      */
-    if ($login == true) {
+    if (isset($login) && ($login == true)) {
         if (isset($_POST['submit']) && !empty($_POST['submit'])) {
             $SubmitFilled = true;
         } else {
@@ -77,10 +73,10 @@ session_start();
     if (isset($SubmitFilled) && $SubmitFilled == true &&
         isset($UsernameFilled) && $UsernameFilled == true &&
         isset($PasswordFilled) && $PasswordFilled == true ) {
-        if (isset($_POST['crsfToken']) && $_SESSION['token'] == $_POST['crsfToken']) {
+        if (isset($_POST['crsfToken']) && $_SESSION['crsfToken'] == $_POST['crsfToken']) {
             $TokenCheck = true;
         } else {
-            echo "<p class='error'>form is niet verstuurd.</p>";
+            echo "<p class='error'>Token klopt niet.</p>";
         }
     }
 
@@ -141,7 +137,7 @@ session_start();
     if(isset($UsernamePCheck) && $UsernamePCheck == true &&
         isset($PasswordPCheck) && $PasswordPCheck == true) {
 
-        require '../makeathonConfig.inc.php';
+        require '../config.php';
 
         $StmtInit = false;
         if ($stmt = mysqli_stmt_init($mysqli)) {
@@ -156,7 +152,7 @@ session_start();
      */
     if(isset($StmtInit) && $StmtInit == true ) {
 
-        $query = "SELECT `Naam`, `Level` FROM `user` WHERE Naam = ? AND Wachtwoord = ?";
+        $query = "SELECT `Naam`, `Level` FROM `User` WHERE Naam = ? AND Wachtwoord = ?";
 
         $StmtPrep = false;
         if (mysqli_stmt_prepare($stmt, $query)) {
