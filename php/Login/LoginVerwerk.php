@@ -53,17 +53,17 @@ session_start();
      * check of velden niet leeg zijn
      */
     if ($login == true) {
-        if (isset($_POST['submit']) && isset($_POST['submit'])) {
+        if (isset($_POST['submit']) && !empty($_POST['submit'])) {
             $SubmitFilled = true;
         } else {
             echo "<p class='error'>form is niet verstuurd.</p>";
         }
-        if (isset($_POST['Username']) && isset($_POST['Username'])) {
+        if (isset($_POST['Username']) && !empty($_POST['Username'])) {
             $UsernameFilled = true;
         } else {
             echo "<p class='error'>Username is niet ingevuld.</p>";
         }
-        if (isset($_POST['Password']) && isset($_POST['Password'])) {
+        if (isset($_POST['Password']) && !empty($_POST['Password'])) {
             $PasswordFilled = true;
         } else {
             echo "<p class='error'>Password is niet ingevuld.</p>";
@@ -77,8 +77,8 @@ session_start();
     if (isset($SubmitFilled) && $SubmitFilled == true &&
         isset($UsernameFilled) && $UsernameFilled == true &&
         isset($PasswordFilled) && $PasswordFilled == true ) {
-        if (isset($_POST['token']) && isset($_POST['submit'])) {
-            $SubmitFilled = true;
+        if (isset($_POST['crsfToken']) && $_SESSION['token'] == $_POST['crsfToken']) {
+            $TokenCheck = true;
         } else {
             echo "<p class='error'>form is niet verstuurd.</p>";
         }
@@ -87,9 +87,7 @@ session_start();
     /*
      * check of de string length klopt
      */
-    if (isset($SubmitFilled) && $SubmitFilled == true &&
-        isset($UsernameFilled) && $UsernameFilled == true &&
-        isset($PasswordFilled) && $PasswordFilled == true ) {
+    if (isset($TokenCheck) && $TokenCheck == true ) {
         /*
          * check of Password klein of groot genoeg is
          */
