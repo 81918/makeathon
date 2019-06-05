@@ -39,7 +39,7 @@ $_SESSION['token'] = $token;
                     <td><input type="text" name="Username" maxlength="20" placeholder="Username"></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="Password" maxlength="40" placeholder="Password"></td>
+                    <td><input type="password" name="Password" maxlength="40" placeholder="Password"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="submit" value="Login"></td>
