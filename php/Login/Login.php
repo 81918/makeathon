@@ -40,17 +40,6 @@ $_SESSION['crsfToken'] = $token;
                         <h5 class="card-title text-center">Log in bij <b>BrownieStreaming!</b></h5>
                             <form id="LoginForm" action="LoginVerwerk.php" method="post">
                                 <input type="hidden" name="crsfToken" value="<?php echo $token;?>">
-<!--                                <table>-->
-<!--                                    <tr>-->
-<!--                                        <td><input type="text" name="Username" maxlength="20" placeholder="Username"></td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td><input type="text" name="Password" maxlength="40" placeholder="Password"></td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td><input type="submit" name="submit" value="Login"></td>-->
-<!--                                    </tr>-->
-<!--                                </table>-->
                                 <div class="form-label-group">
 
 
@@ -64,7 +53,7 @@ $_SESSION['crsfToken'] = $token;
                                     <input type="password" name="Password" id="wachtwoord" maxlength="40"  class="form-control" placeholder="Password" required>
                                     <label for="wachtwoord">Wachtwoord</label>
                                 </div>
-                                <input name="submit" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Login">
+                                <input name="Submit" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Login">
                             </form>
                         <hr class="my-4">
                         <h5 class="text-center">Nog geen account?</h5><a class="nav-link" href="#">

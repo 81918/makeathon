@@ -49,7 +49,7 @@ session_start();
      * check of velden niet leeg zijn
      */
     if (isset($login) && ($login == true)) {
-        if (isset($_POST['submit']) && !empty($_POST['submit'])) {
+        if (isset($_POST['Submit']) && !empty($_POST['Submit'])) {
             $SubmitFilled = true;
         } else {
             echo "<p class='error'>form is niet verstuurd.</p>";
@@ -73,10 +73,14 @@ session_start();
     if (isset($SubmitFilled) && $SubmitFilled == true &&
         isset($UsernameFilled) && $UsernameFilled == true &&
         isset($PasswordFilled) && $PasswordFilled == true ) {
-        if (isset($_POST['crsfToken']) && $_SESSION['crsfToken'] == $_POST['crsfToken']) {
-            $TokenCheck = true;
+        if (isset($_POST['crsfToken']) && !empty($_POST['crsfToken'])) {
+            if ($_SESSION['crsfToken'] == $_POST['crsfToken']){
+                $TokenCheck = true;
+            }else {
+                echo "<p class='error'>Token is klopt niet meegegeven.</p>";
+            }
         } else {
-            echo "<p class='error'>Token klopt niet.</p>";
+            echo "<p class='error'>Token is niet meegegeven.</p>";
         }
     }
 
