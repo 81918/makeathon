@@ -39,7 +39,7 @@ $_SESSION['token'] = $token;
                     <td><input type="text" name="Username" maxlength="20" placeholder="Username"></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="Password" maxlength="20" placeholder="Password"></td>
+                    <td><input type="text" name="Password" maxlength="40" placeholder="Password"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="submit" value="Login"></td>
@@ -50,7 +50,7 @@ $_SESSION['token'] = $token;
     } else {
     ?>
         <h1>Oops!</h1>
-        <p class="error"></p>
+        <p class="error">U bent al ingelogt.</p>
     <?php
     }
     ?>
